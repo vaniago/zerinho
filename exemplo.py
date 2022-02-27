@@ -1,8 +1,16 @@
-#from https://github.com/jupyter-widgets/ipywidgets/issues/2487
+'''Gera questões de múltipla escolha dentro de um colab notebook
+como em 
+https://github.com/jupyter-widgets/ipywidgets/issues/2487
+por
+https://github.com/zxzhaixiang
+Data: 27/02/2022
+'''
+
 import ipywidgets as widgets
 import sys
 from IPython.display import display
 from IPython.display import clear_output
+#acréscimo para simplificar o esquema de cores
 from termcolor import colored
 
 
@@ -29,10 +37,8 @@ def create_multipleChoice_widget(description, options, correct_answer):
         a = int(alternativa.value)
         if a==correct_answer_index:
             s=colored("Correto!",'white','on_green')
-            #s = '\x1b[6;30;42m' + "Correto!" + '\x1b[0m' +"\n" #green color
         else:
             s=colored("Ops! Errou.",'white','on_red')
-            #s = '\x1b[5;30;41m' + "Ops! Errou. " + '\x1b[0m' +"\n" #red color
         with feedback_out:
             clear_output()
             print(s)
@@ -45,13 +51,13 @@ def create_multipleChoice_widget(description, options, correct_answer):
     return widgets.VBox([description_out, alternativa, check, feedback_out])
     
 
-
+#Insira aqui as questões
 Q1 = create_multipleChoice_widget('blablabla',['apple','banana','pear'],'pear')
 Q2 = create_multipleChoice_widget('lalalalal',['cat','dog','mouse'],'dog')
 Q3 = create_multipleChoice_widget('jajajajaj',['blue','white','red'],'white')
 
 
 
-display(Q1)
-display(Q2)
-display(Q3)
+#display(Q1)
+#display(Q2)
+#display(Q3)
